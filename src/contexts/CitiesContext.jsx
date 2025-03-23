@@ -7,22 +7,43 @@ const CitiesProvider = ({ children }) => {
 
     const [cities, setCities] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [currentCity, setCurrentCity] = useState({});
 
     useEffect(() => {
         setIsLoading(true);
         fetch(`${BASE_URL}/cities`)
             .then((res) => res.json())
-            .then((data) => setCities(data))
-            .catch((err) => console.error(err));
-        setIsLoading(false);
+            .then((data) => {
+                setCities(data);
+                setIsLoading(false);
+            })
+            .catch((err) => {
+                console.error(err);
+                setIsLoading(false);
+            });
     }, []);
+
+    const getCity = (id) => {
+        setIsLoading(true);
+        fetch(`${BASE_URL}/cities/${id}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setCurrentCity(data);
+                setIsLoading(false);
+            })
+            .catch((err) => {
+                console.error(err);
+                setIsLoading(false);
+            });
+    };
 
     return (
         <CitiesContext.Provider
             value={{
                 cities,
-                setCities,
                 isLoading,
+                currentCity,
+                getCity,
             }}
         >
             {children}
