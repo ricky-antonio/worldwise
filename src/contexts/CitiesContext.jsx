@@ -27,6 +27,21 @@ const CitiesProvider = ({ children }) => {
             .finally(() => setIsLoading(false));
     };
 
+    const addCity = (newCity) => {
+        setIsLoading(true);
+        return fetch(`${BASE_URL}/cities/`, {
+            method: "POST",
+            body: JSON.stringify(newCity),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => setCities((cities) => [...cities, data]))
+            .catch((err) => console.error(err))
+            .finally(() => setIsLoading(false));
+    };
+
     return (
         <CitiesContext.Provider
             value={{
@@ -34,6 +49,7 @@ const CitiesProvider = ({ children }) => {
                 isLoading,
                 currentCity,
                 getCity,
+                addCity,
             }}
         >
             {children}
