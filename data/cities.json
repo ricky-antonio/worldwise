@@ -49,18 +49,6 @@
       }
     },
     {
-      "id": "59fc",
-      "cityName": "Sudeichsfeld",
-      "country": "Germany",
-      "emoji": "DE",
-      "date": "2025-02-25T02:30:19.000Z",
-      "notes": "frei",
-      "position": {
-        "lat": "51.184624159942345",
-        "lng": "10.242919698357584"
-      }
-    },
-    {
       "id": "e102",
       "cityName": "London",
       "country": "United Kingdom of Great Britain and Northern Ireland (the)",
@@ -70,18 +58,6 @@
       "position": {
         "lat": "51.481382896100975",
         "lng": "-0.0439453125"
-      }
-    },
-    {
-      "id": "372e",
-      "cityName": "Borris in Ossory",
-      "country": "Ireland",
-      "emoji": "IE",
-      "date": "2024-12-10T02:48:38.000Z",
-      "notes": "guiness",
-      "position": {
-        "lat": "53.028000167735165",
-        "lng": "-7.690429687500001"
       }
     }
   ]

@@ -38,7 +38,17 @@ const CitiesProvider = ({ children }) => {
         })
             .then((res) => res.json())
             .then((data) => setCities((cities) => [...cities, data]))
-            .catch((err) => console.error(err))
+            .catch((err) => console.error("Error adding city", err))
+            .finally(() => setIsLoading(false));
+    };
+
+    const deleteCity = (id) => {
+        setIsLoading(true);
+        return fetch(`${BASE_URL}/cities/${id}`, {
+            method: "DELETE",
+        })
+            .then(() => setCities((cities) => cities.filter((city) => id !== city.id)))
+            .catch((err) => console.error("Error deleting city", err))
             .finally(() => setIsLoading(false));
     };
 
@@ -50,6 +60,7 @@ const CitiesProvider = ({ children }) => {
                 currentCity,
                 getCity,
                 addCity,
+                deleteCity
             }}
         >
             {children}
