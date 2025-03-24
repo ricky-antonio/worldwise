@@ -13,28 +13,18 @@ const CitiesProvider = ({ children }) => {
         setIsLoading(true);
         fetch(`${BASE_URL}/cities`)
             .then((res) => res.json())
-            .then((data) => {
-                setCities(data);
-                setIsLoading(false);
-            })
-            .catch((err) => {
-                console.error(err);
-                setIsLoading(false);
-            });
+            .then((data) => setCities(data))
+            .catch((err) => console.error(err))
+            .finally(() => setIsLoading(false));
     }, []);
 
     const getCity = (id) => {
         setIsLoading(true);
         fetch(`${BASE_URL}/cities/${id}`)
             .then((res) => res.json())
-            .then((data) => {
-                setCurrentCity(data);
-                setIsLoading(false);
-            })
-            .catch((err) => {
-                console.error(err);
-                setIsLoading(false);
-            });
+            .then((data) => setCurrentCity(data))
+            .catch((err) => console.error(err))
+            .finally(() => setIsLoading(false));
     };
 
     return (
