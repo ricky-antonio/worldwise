@@ -1,4 +1,10 @@
-import { createContext, useEffect, useContext, useReducer } from "react";
+import {
+    createContext,
+    useEffect,
+    useContext,
+    useReducer,
+    useCallback,
+} from "react";
 
 const initialState = {
     cities: [],
@@ -72,17 +78,24 @@ const CitiesProvider = ({ children }) => {
             );
     }, []);
 
-    const getCity = (id) => {
-        if (Number(id) === currentCity.id) return;
+    const getCity = useCallback(() => {
+        (id) => {
+            if (Number(id) === currentCity.id) return;
 
-        dispatch({ type: "loading" });
-        fetch(`${BASE_URL}/cities/${id}`)
-            .then((res) => res.json())
-            .then((data) => dispatch({ type: "city/loaded", payload: data }))
-            .catch(() =>
-                dispatch({ type: "rejected", payload: "Error loading data." })
-            );
-    };
+            dispatch({ type: "loading" });
+            fetch(`${BASE_URL}/cities/${id}`)
+                .then((res) => res.json())
+                .then((data) =>
+                    dispatch({ type: "city/loaded", payload: data })
+                )
+                .catch(() =>
+                    dispatch({
+                        type: "rejected",
+                        payload: "Error loading data.",
+                    })
+                );
+        };
+    }, [currentCity.id]);
 
     const addCity = (newCity) => {
         dispatch({ type: "loading" });
