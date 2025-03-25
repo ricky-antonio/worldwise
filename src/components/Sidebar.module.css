@@ -8,3 +8,13 @@
     align-items: center;
     height: 100vh;
 }
+
+
+@media (max-width: 1000px) {
+    .sidebar {
+        height: 50vh;
+        flex-basis: 45rem;
+        padding: 0.5rem;
+        order: 2;
+    }
+}

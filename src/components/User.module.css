@@ -32,3 +32,19 @@
     text-transform: uppercase;
     cursor: pointer;
 }
+
+@media (max-width: 1000px) {
+    .user {
+        top: 1rem;
+        right: 1rem;
+        padding: 1rem;
+        font-size: 1.6rem;
+    }
+    .user img {
+        display: none;
+    }
+
+    .user .text {
+        display: none;
+    }
+}

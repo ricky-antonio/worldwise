@@ -8,13 +8,15 @@ const User = () => {
 
     function handleClick() {
         logout();
-        navigate("/")
+        navigate("/");
     }
 
     return (
         <div className={styles.user}>
-            <img src={user.avatar} alt={user.name} />
-            <span>Welcome, {user.name}</span>
+            <div className={styles.text}>
+                <img src={user.avatar} alt={user.name} />
+                <span>Welcome, {user.name}</span>
+            </div>
             <button onClick={handleClick}>Logout</button>
         </div>
     );

@@ -4,3 +4,9 @@
     display: flex;
     position: relative;
 }
+
+@media (max-width: 1000px) {
+    .app {
+        flex-direction: column;
+    }
+}
